@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <meta name="description" content="Escolha seu serviço e solicite um horário na Leo Barbas. Corte, barba e cuidado em cada detalhe.">
+  <title>Leo Barbas | Agende seu momento</title>
+  <link rel="stylesheet" href="style_front_end.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#agendamento">Ir para o agendamento</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="scissors" viewBox="0 0 48 48">
+      <circle cx="11" cy="35" r="6"/><circle cx="37" cy="35" r="6"/>
+      <path d="M15 30 36 7M33 30 12 7M24 20l2 2"/>
+    </symbol>
+    <symbol id="razor" viewBox="0 0 48 48">
+      <path d="m9 28 23-18 8 10-23 18zM13 25l8 10M32 10l3-3M17 38l-5 4-6-7 6-5"/>
+      <path d="m22 20 9-7"/>
+    </symbol>
+    <symbol id="sparkle" viewBox="0 0 48 48">
+      <path d="m24 7 5 12 12 5-12 5-5 12-5-12-12-5 12-5zM38 5v8M34 9h8"/>
+    </symbol>
+    <symbol id="clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14m-5-5 5 5-5 5"/>
+    </symbol>
+    <symbol id="chat" viewBox="0 0 24 24">
+      <path d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z"/>
+      <path d="M8 8c0 4 4 8 8 8l1-3-3-1-1 1-2-2 1-1-1-3z"/>
+    </symbol>
+  </svg>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Leo Barbas, início">
+        <span class="brand-mark" aria-hidden="true">LB<span>✦</span></span>
+        <span class="brand-wordmark">LEO BARBAS<small>BARBEARIA & ESTILO</small></span>
+      </a>
+      <span class="header-note"><span class="gold-dot"></span>Seu próximo cuidado começa aqui</span>
+    </header>
+
+    <main id="agendamento">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ESTILO PRÓPRIO. CUIDADO DE VERDADE.</p>
+          <h1 id="page-title">Leo Barbas<span>Seu momento de <em>renovar.</em></span></h1>
+          <p class="hero-description">Selecione o serviço, a data e o horário desejado.<br>O próximo passo para o seu melhor visual começa aqui.</p>
+          <p class="opening-hours"><svg class="icon" aria-hidden="true"><use href="#clock"/></svg><span id="opening-hours">Terça a sábado · 09h–12h e 14h–17h</span></p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="seal"><span class="seal-top">LEO BARBAS</span><svg><use href="#scissors"/></svg><span class="seal-bottom">CORTE · BARBA · ESTILO</span></div>
+          <span class="art-star star-one">✦</span><span class="art-star star-two">✦</span>
+        </div>
+      </section>
+
+      <div class="demo-notice"><span class="notice-tag">DEMONSTRAÇÃO</span><p>Explore a agenda com horários de exemplo. A disponibilidade real e a confirmação são combinadas com a barbearia.</p></div>
+      <noscript><p class="noscript-notice">Ative o JavaScript no navegador para selecionar os horários e preparar sua solicitação.</p></noscript>
+
+      <form id="booking-form" novalidate>
+        <div class="booking-layout">
+          <div class="booking-steps">
+            <section class="panel" aria-labelledby="services-title">
+              <div class="section-heading"><span class="step-number">01</span><div><h2 id="services-title">Qual vai ser o cuidado de hoje?</h2><p>Escolha o serviço que combina com você.</p></div></div>
+              <fieldset id="service-fieldset" aria-describedby="service-error">
+                <legend class="sr-only">Escolha um serviço</legend>
+                <div class="service-grid" id="service-options"></div>
+                <p class="field-error" id="service-error" aria-live="polite"></p>
+              </fieldset>
+            </section>
+
+            <section class="panel" aria-labelledby="schedule-title">
+              <div class="section-heading"><span class="step-number">02</span><div><h2 id="schedule-title">Reserve um tempo para você</h2><p>Escolha o melhor dia e confira os horários.</p></div></div>
+              <div class="date-row">
+                <div class="field"><label for="booking-date">Data do atendimento <span aria-hidden="true">*</span></label><input type="date" id="booking-date" name="date" required aria-describedby="date-hint date-error"><p class="field-hint" id="date-hint">Horários de Brasília · Não atendemos domingo e segunda.</p><p class="field-error" id="date-error" aria-live="polite"></p></div>
+                <div class="date-caption" aria-hidden="true"><span>UM TEMPO NA AGENDA.</span><strong>Um cuidado com você.</strong></div>
+              </div>
+              <fieldset id="time-fieldset" aria-describedby="schedule-status time-error">
+                <legend>Horários disponíveis <span aria-hidden="true">*</span></legend>
+                <p class="field-hint schedule-status" id="schedule-status" role="status">Selecione um serviço e uma data para consultar.</p>
+                <div class="time-grid" id="time-options"></div>
+                <p class="field-error" id="time-error" aria-live="polite"></p>
+              </fieldset>
+              <div class="time-key" aria-hidden="true"><span><i></i>Disponível</span><span><i class="selected-key"></i>Selecionado</span><span><i class="unavailable-key"></i>Indisponível</span></div>
+            </section>
+
+            <section class="panel" aria-labelledby="client-title">
+              <div class="section-heading"><span class="step-number">03</span><div><h2 id="client-title">Como podemos chamar você?</h2><p>Seus dados para combinar o atendimento.</p></div></div>
+              <div class="client-grid">
+                <div class="field"><label for="client-name">Nome completo <span aria-hidden="true">*</span></label><input id="client-name" name="name" type="text" placeholder="Seu nome e sobrenome" autocomplete="name" maxlength="100" required aria-describedby="name-error"><p class="field-error" id="name-error" aria-live="polite"></p></div>
+                <div class="field"><label for="client-phone">WhatsApp com DDD <span aria-hidden="true">*</span></label><input id="client-phone" name="phone" type="tel" inputmode="tel" placeholder="(11) 99999-9999" autocomplete="tel-national" maxlength="15" required aria-describedby="phone-hint phone-error"><p class="field-hint" id="phone-hint">Número brasileiro com DDD.</p><p class="field-error" id="phone-error" aria-live="polite"></p></div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="summary panel" aria-labelledby="summary-title">
+            <div class="summary-heading"><span class="eyebrow">FALTA POUCO</span><h2 id="summary-title">Seu próximo visual</h2><p>Confira os detalhes do seu momento.</p></div>
+            <dl class="summary-list" aria-live="polite" aria-atomic="true">
+              <div><dt>Serviço</dt><dd id="summary-service">A escolher</dd></div>
+              <div><dt>Duração</dt><dd id="summary-duration">—</dd></div>
+              <div><dt>Data</dt><dd id="summary-date">A escolher</dd></div>
+              <div><dt>Horário</dt><dd id="summary-time">A escolher</dd></div>
+            </dl>
+            <div class="summary-total"><span>Valor total<small>Pagamento na barbearia</small></span><strong id="summary-total">—</strong></div>
+            <button class="submit-button" id="submit-button" type="submit"><svg class="icon" aria-hidden="true"><use href="#chat"/></svg><span>Solicitar agendamento<br>pelo WhatsApp</span><svg class="icon button-arrow" aria-hidden="true"><use href="#arrow"/></svg></button>
+            <p class="submit-note">Você revisa e envia a mensagem no WhatsApp. Seu horário só estará confirmado após a resposta da barbearia.</p>
+            <p id="submit-status" class="submit-status" role="alert" tabindex="-1" hidden></p>
+            <div class="summary-signature"><span aria-hidden="true">✦</span> Cuidado em cada detalhe.</div>
+          </aside>
+        </div>
+      </form>
+    </main>
+    <footer class="site-footer"><span>LEO BARBAS <span class="footer-divider">/</span> Feito para o seu estilo.</span><span>Agenda demonstrativa · Sem reserva automática</span></footer>
+  </div>
+</body>
+</html>
